@@ -1,0 +1,7 @@
+<mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Write Something</mat-label>
+    <input matInput placeholder="" (keyup.enter)="send(value)" [(ngModel)]="value">
+</mat-form-field>
+
+<button mat-raised-button (click)="send(value)" style="margin-left: 10px;">
+    save</button>

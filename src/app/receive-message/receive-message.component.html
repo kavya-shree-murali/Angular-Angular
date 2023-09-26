@@ -1,0 +1,17 @@
+<div class="" (load)="onLoad()">
+    <h2>Message Broadcasting to all subscribers(Subject)</h2>
+    <p style="color: red;">{{message}}</p>
+</div>
+
+<h2>Behavior Subject</h2>
+<mat-card>
+    <!-- <button mat-raised-button color="primary" (click)="sendOTP()">Primary</button> -->
+    <div class="text-right w-full">
+        <a (click)=" resendOTP()" *ngIf="(timer.timer$|async)=='00.00'"
+            class="text-lg font-normal forgot_passowrd cursor-pointer">resend
+            OTP
+        </a>
+        <a class="ml-1 " *ngIf="(timer.timer$|async)!='00.00'">{{timer.timer$|async}} Seconds left...
+        </a>
+    </div>
+</mat-card>

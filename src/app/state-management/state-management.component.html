@@ -1,0 +1,54 @@
+<mat-card style="align-items: center;">
+    <h1>Add on Local Storage</h1>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Write Something</mat-label>
+        <input matInput placeholder="Ex. Pizza" (keyup.enter)="save()" [(ngModel)]="value">
+    </mat-form-field>
+
+    <button mat-raised-button (click)="save()" style="margin-left: 10px;">
+        save</button>
+    <br>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <input matInput type="text" [(ngModel)]="searchTerm" (keyup)="filterItems($event)" placeholder="Search...">
+    </mat-form-field>
+
+    <div *ngIf="!searchTerm">
+        <ul *ngFor="let items of array; let i = index">
+            <!-- <mat-checkbox class="example-margin" (change)="check($event, i)"></mat-checkbox> -->
+            <li [ngClass]="{'color': checking}">{{items}} <button mat-raised-button (click)="remove(items)"
+                    style="margin-left: 10px;">Remove</button> </li>
+
+        </ul>
+        <p style="color: green;">Number of Items : {{array.length}}</p>
+    </div>
+
+    <div *ngIf="searchTerm">
+        <ul *ngFor="let items of filteredItems; let i = index">
+            <!-- <mat-checkbox class="example-margin" (change)="check($event, items)" [ngClass]="{'color': checking}"></mat-checkbox> -->
+            <li>{{items}} <button mat-raised-button (click)="remove(items)" style="margin-left: 10px;">Remove</button>
+            </li>
+        </ul>
+        <p style="color: green;">Number of Items : {{filteredItems.length}}</p>
+
+    </div>
+
+    <div *ngIf="filteredItems.length == 0">
+        <p>No Data Found...!</p>
+    </div>
+</mat-card>
+
+<br>
+<mat-card style="align-items: center;">
+    <h1>Dynamic Theme Change</h1>
+
+    <mat-form-field appearance="outline" class="example-full-width">
+        <textarea matInput placeholder="" [value]="Theme" [ngStyle]="{'background': Theme, 'color': use}"></textarea>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline" [floatLabel]="'always'" class="example-full-width">
+        <input matInput type="text" [(ngModel)]="Theme" placeholder="Change Theme...">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button (click)="change(Theme)">Toggle</button>
+    <br>
+</mat-card>
