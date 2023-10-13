@@ -11,11 +11,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { ToastrModule } from 'ngx-toastr';
 import { ComonComponent } from './comon/comon.component';
 import { BroadcastComponent } from './broadcast/broadcast.component';
 import { ReceiveMessageComponent } from './receive-message/receive-message.component';
+import { CspComponent } from './csp/csp.component';
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule, HttpXsrfTokenExtractor } from '@angular/common/http';
+import { CustomInterceptor } from './services/interceptor';
+import { CustInterceptor } from './services/interceptor.service';
+import { PaytmComponent } from './paytm/paytm.component';
+import { PaymentComponent } from './payment/payment.component';
+import { RxjsWorkoutsComponent } from './rxjs-workouts/rxjs-workouts.component';
 
 
 @NgModule({
@@ -24,7 +31,11 @@ import { ReceiveMessageComponent } from './receive-message/receive-message.compo
     StateManagementComponent,
     ComonComponent,
     BroadcastComponent,
-    ReceiveMessageComponent
+    ReceiveMessageComponent,
+    CspComponent,
+    PaytmComponent,
+    PaymentComponent,
+    RxjsWorkoutsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,14 +44,20 @@ import { ReceiveMessageComponent } from './receive-message/receive-message.compo
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
-    FormsModule,ReactiveFormsModule,
+    FormsModule, ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
     MatCardModule,
     ToastrModule.forRoot(),
+    HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'Xsrf-Cookie',
+      headerName: 'XSRF-TOKEN'
+    })
 
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: CustInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,18 @@
+<h2>Payment Integration with Paytm</h2>
+
+<div>
+    <button style="margin-left: 10px" mat-raised-button color="primary">Pay</button>
+</div>
+<div class="" style="display: flex;justify-content: space-between;align-items: center;flex-wrap: wrap;">
+    <div *ngFor="let img of data" style="padding: 50px;">
+        <img src="{{img.images[0]}}" alt="" height="150" width="150">
+        <p>Price : {{img.price}}</p>
+        <p>Title : {{img.title}}</p>
+        <button class="but" (click)="decrement()">-</button>
+        <span>{{ quantity }}</span>
+        <button class="but" (click)="increment(img.id)">+</button> 
+        <button  mat-raised-button color="primary">Add To Card</button>  
+     </div>
+</div>
+
+<span class="example-spacer"></span>

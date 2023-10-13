@@ -5,12 +5,17 @@ import { StateManagementComponent } from './state-management/state-management.co
 import { ComonComponent } from './comon/comon.component';
 import { BroadcastComponent } from './broadcast/broadcast.component';
 import { ReceiveMessageComponent } from './receive-message/receive-message.component';
+import { CspComponent } from './csp/csp.component';
+import { PaytmComponent } from './paytm/paytm.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
-  {path:'', component: AppComponent},
-  {path: 'state', component: StateManagementComponent},
+  {path:'', component: StateManagementComponent},
+  {path: 'csp', component: CspComponent},
   {path: 'broad', component: BroadcastComponent},
-  // {path: 'load', component:ReceiveMessageComponent}
+  {path: 'paytm', component:PaytmComponent},
+  {path: 'pay', component:PaymentComponent}
+
 ];
 
 @NgModule({
