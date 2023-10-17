@@ -1,0 +1,25 @@
+.p1{
+    font-family: Lato;
+    font-weight: bold;
+    font-size:20px;
+    padding-left:210px;
+    padding-top:25px;
+}
+.imgdiv{
+  margin-left:150px;
+  width:404px;
+  height:504px;
+  border:2px solid red;
+}
+.bgdiv{
+  background-color: black;
+  width:405px;
+  height:504px;
+  position: absolute;
+  top:180px;
+  left:150px;
+  opacity:0.1;
+}
+.btnstart{
+  margin-left:280px
+}

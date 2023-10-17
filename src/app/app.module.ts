@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,6 +47,7 @@ import { RxjsWorkoutsComponent } from './rxjs-workouts/rxjs-workouts.component';
     MatFormFieldModule,
     FormsModule, ReactiveFormsModule,
     MatButtonModule,
+    DragDropModule,
     MatInputModule,
     MatCardModule,
     ToastrModule.forRoot(),

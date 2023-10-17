@@ -8,13 +8,16 @@ import { ReceiveMessageComponent } from './receive-message/receive-message.compo
 import { CspComponent } from './csp/csp.component';
 import { PaytmComponent } from './paytm/paytm.component';
 import { PaymentComponent } from './payment/payment.component';
+import { RxjsWorkoutsComponent } from './rxjs-workouts/rxjs-workouts.component';
 
 const routes: Routes = [
   {path:'', component: StateManagementComponent},
   {path: 'csp', component: CspComponent},
   {path: 'broad', component: BroadcastComponent},
   {path: 'paytm', component:PaytmComponent},
-  {path: 'pay', component:PaymentComponent}
+  {path: 'pay', component:PaymentComponent},
+  {path: 'rxjs', component:RxjsWorkoutsComponent}
+
 
 ];
 
