@@ -9,6 +9,7 @@ import { CspComponent } from './csp/csp.component';
 import { PaytmComponent } from './paytm/paytm.component';
 import { PaymentComponent } from './payment/payment.component';
 import { RxjsWorkoutsComponent } from './rxjs-workouts/rxjs-workouts.component';
+import { GenerativeAiComponent } from './generative-ai/generative-ai.component';
 
 const routes: Routes = [
   {path:'', component: StateManagementComponent},
@@ -16,7 +17,9 @@ const routes: Routes = [
   {path: 'broad', component: BroadcastComponent},
   {path: 'paytm', component:PaytmComponent},
   {path: 'pay', component:PaymentComponent},
-  {path: 'rxjs', component:RxjsWorkoutsComponent}
+  {path: 'rxjs', component:RxjsWorkoutsComponent},
+  {path: 'ai', component:GenerativeAiComponent}
+
 
 
 ];

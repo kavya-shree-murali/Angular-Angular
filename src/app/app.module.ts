@@ -24,6 +24,8 @@ import { CustInterceptor } from './services/interceptor.service';
 import { PaytmComponent } from './paytm/paytm.component';
 import { PaymentComponent } from './payment/payment.component';
 import { RxjsWorkoutsComponent } from './rxjs-workouts/rxjs-workouts.component';
+import { GenerativeAiComponent } from './generative-ai/generative-ai.component';
+import { CustomInterceptor1 } from './generative-ai/interceptors';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { RxjsWorkoutsComponent } from './rxjs-workouts/rxjs-workouts.component';
     CspComponent,
     PaytmComponent,
     PaymentComponent,
-    RxjsWorkoutsComponent
+    RxjsWorkoutsComponent,
+    GenerativeAiComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,7 @@ import { RxjsWorkoutsComponent } from './rxjs-workouts/rxjs-workouts.component';
     })
 
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor1, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: CustInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
