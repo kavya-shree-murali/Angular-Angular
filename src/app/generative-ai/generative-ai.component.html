@@ -1,13 +1,198 @@
-<p>generative-ai works!</p>
-<div class="chat-container">
-    <div *ngFor="let message of chatMessages" [ngClass]="message.role">
-      {{ message.content }}
-    </div>
+<!-- <h2>Generative AI</h2> -->
+<!-- <div class="chat-container">
+  <div *ngFor="let message of chatMessages" [ngClass]="message.role">
+    {{ message.content }}
+  </div>
 
-    <div>{{userMessage}}</div>
+  <div *ngFor="let message of user" [ngClass]="message.role">
+    {{ message.content }}
   </div>
-  
-  <div class="input-container">
-    <input [(ngModel)]="userMessage" placeholder="Enter your message" />
-    <button (click)="sendMessage()">Send</button>
+
+  <div *ngFor="let image of imageData">
+    <img src="{{image.url}}" alt="" height="250" weight="250">
   </div>
+</div>
+
+<div class="input-container">
+  <input [(ngModel)]="userMessage" placeholder="Enter your message" />
+  <button (click)="sendMessage()">Send</button>
+</div>
+
+<div class="input-container">
+  <input [(ngModel)]="UploadImage" placeholder="Enter your message" />
+  <button (click)="sendImage()">Send</button>
+</div> -->
+
+<div class="container">
+  <div class="chat">
+    <section class="msger" id="msger">
+      <header class="msger-header">
+        <div class="msger-header-title">
+          <i class="fas fa-comment-alt"></i>Generative AI
+        </div>
+        <div class="msger-header-options">
+          <span></span>
+        </div>
+      </header>
+      <main class="msger-chat" id="msger-chat1">
+        <div class="" id="msger-chat1">
+
+          <div class="" style="text-align: center;font-weight: 600;"
+            *ngIf="chatMessages.length==0 && !imageData && text.length==0">
+            No conversation found
+          </div>
+
+          <ng-container *ngFor="let data of chatMessages">
+
+
+            <div class="msg right-msg" *ngIf="data.reply">
+              <div class="msg-bubble">
+                <div class="msg-info">
+                  <div class="msg-info-name">You</div>
+                </div>
+                <div class="msg-text">
+                  {{data?.reply}}
+                </div>
+              </div>
+            </div>
+
+            <div class="msg left-msg" *ngIf="data.content">
+              <div class="msg-bubble">
+
+                <div class="msg-info">
+                  <div class="msg-info-name">Bot</div>
+                </div>
+                <div class="msg-text">
+                  {{data?.content}}
+                </div>
+              </div>
+            </div>
+
+          </ng-container>
+
+          <!-- //Image(GPT) -->
+          <ng-container *ngFor="let data of imageData">
+            <div class="msg right-msg" *ngIf="data?.you">
+              <div class="msg-bubble">
+                <div class="msg-info">
+                  <div class="msg-info-name">You</div>
+                </div>
+                <div class="msg-text">
+                  {{data?.you}}
+                </div>
+              </div>
+            </div>
+
+            <div class="msg left-msg" *ngIf="data?.bot">
+              <div class="msg-bubble">
+
+                <div class="msg-info">
+                  <div class="msg-info-name">Bot</div>
+                </div>
+                <div>
+                  <img src="{{data?.bot}}" alt="" height="70" weight="70">
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- // GoogleAI -->
+          <ng-container *ngFor="let data of orderArray">
+
+            <div class="msg right-msg" *ngIf="data?.you">
+              <div class="msg-bubble">
+                <div class="msg-info">
+                  <div class="msg-info-name">You</div>
+                </div>
+                <div class="msg-text">
+                  {{data?.you}}
+                </div>
+              </div>
+            </div>
+
+            <div class="msg left-msg" *ngIf="data?.value">
+              <div class="msg-bubble">
+
+                <div class="msg-info">
+                  <div class="msg-info-name">GoogleAI</div>
+                </div>
+                <div>
+                  {{data?.value?.output}}
+                </div>
+              </div>
+            </div>
+
+          </ng-container>
+
+          <!-- audio -->
+
+          <ng-container *ngFor="let data of text">
+
+            <div class="msg right-msg">
+              <div class="msg-bubble">
+                <div class="msg-info">
+                  <div class="msg-info-name">You</div>
+                </div>
+                <div class="msg-text">
+                  <div *ngIf="file">
+                    <audio controls>
+                      <source [src]="getAudioURL()" type="audio/mpeg">
+                    </audio>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="msg left-msg" *ngIf="data?.value">
+              <div class="msg-bubble">
+
+                <div class="msg-info">
+                  <div class="msg-info-name">Audio To Text</div>
+                </div>
+                <div>
+                  {{data?.value}}
+                </div>
+              </div>
+            </div>
+
+          </ng-container>
+
+          <!-- //Audio(GPT) -->
+
+          <!-- <div class="msg left-msg" *ngIf="recording">
+            <div *ngFor="let audioUrl of audioBlobUrl">
+              <div class="msg-bubble">
+                <div class="msg-info">
+                  <div class="msg-info-name">Bot</div>
+                </div>
+                <audio controls class="message">
+                  <source [src]="audioUrl.message" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+            </div>
+          </div> -->
+
+        </div>
+      </main>
+
+      <div class="msger-inputarea">
+        <input type="text" [(ngModel)]="userMessage" id="inputVal" class="msger-input"
+          placeholder="Enter your message...">
+          <br>
+        <input type="file" (change)="onFileSelected($event)">
+        <!-- <input [(ngModel)]="UploadImage" placeholder="Enter your message" /> -->
+        <button (click)="sendMessage()">Send</button>
+        <button (click)="sendImage()">Image</button>
+        <!-- <button *ngIf="!recording" class="start-button" (click)="startRecording()">Start</button>
+        <button *ngIf="recording" class="stop-button" (click)="stopRecording()">Stop</button> -->
+        <button (click)="sendAudio()">audio</button>
+
+        <button (click)="sendGoogleAI()">GoogleAI</button>
+      </div>
+
+      <div class="msger-inputarea">
+      </div>
+    </section>
+  </div>
+</div>

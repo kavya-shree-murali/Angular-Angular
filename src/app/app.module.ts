@@ -62,7 +62,7 @@ import { CustomInterceptor1 } from './generative-ai/interceptors';
 
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor1, multi: true },
-  { provide: HTTP_INTERCEPTORS, useClass: CustInterceptor, multi: true }],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
