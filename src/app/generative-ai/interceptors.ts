@@ -8,6 +8,7 @@ export class CustomInterceptor1 implements HttpInterceptor {
   constructor(private tokenExtractor: HttpXsrfTokenExtractor) {
   }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log(request)
 
     let clone: any = ''
 
@@ -39,9 +40,16 @@ export class CustomInterceptor1 implements HttpInterceptor {
       });
 
       clone = request.clone({ headers: newHeaders })
-    } else if (request.url.includes(`https://generativelanguage.googleapis.com/`)){
+    } else if (request.url.includes(`https://generativelanguage.googleapis.com/`)) {
       const newHeaders = new HttpHeaders({
         "Content-Type": "application/json",
+      });
+
+      clone = request.clone({ headers: newHeaders })
+    } else if (request.url.includes(`https://slides.googleapis.com/v1/presentations`)) {
+      const newHeaders = new HttpHeaders({
+        "Content-Type": "application/json",
+        // "Authorization" : `Bearer ${environment.API_KEY}`
       });
 
       clone = request.clone({ headers: newHeaders })

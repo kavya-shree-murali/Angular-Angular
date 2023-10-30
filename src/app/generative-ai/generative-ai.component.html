@@ -1,27 +1,4 @@
-<!-- <h2>Generative AI</h2> -->
-<!-- <div class="chat-container">
-  <div *ngFor="let message of chatMessages" [ngClass]="message.role">
-    {{ message.content }}
-  </div>
 
-  <div *ngFor="let message of user" [ngClass]="message.role">
-    {{ message.content }}
-  </div>
-
-  <div *ngFor="let image of imageData">
-    <img src="{{image.url}}" alt="" height="250" weight="250">
-  </div>
-</div>
-
-<div class="input-container">
-  <input [(ngModel)]="userMessage" placeholder="Enter your message" />
-  <button (click)="sendMessage()">Send</button>
-</div>
-
-<div class="input-container">
-  <input [(ngModel)]="UploadImage" placeholder="Enter your message" />
-  <button (click)="sendImage()">Send</button>
-</div> -->
 
 <div class="container">
   <div class="chat">
@@ -37,8 +14,8 @@
       <main class="msger-chat" id="msger-chat1">
         <div class="" id="msger-chat1">
 
-          <div class="" style="text-align: center;font-weight: 600;"
-            *ngIf="chatMessages.length==0 && !imageData && text.length==0">
+          <div class="" style="text-align: center;font-weight: 600;margin-top: 150px;"
+            *ngIf="chatMessages.length==0 && imageData.length==0 && text.length==0 && orderArray.length==0">
             No conversation found
           </div>
 
@@ -189,6 +166,7 @@
         <button (click)="sendAudio()">audio</button>
 
         <button (click)="sendGoogleAI()">GoogleAI</button>
+        <button (click)="googleSlide()">Google Slides</button>
       </div>
 
       <div class="msger-inputarea">

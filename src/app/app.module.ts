@@ -26,6 +26,8 @@ import { PaymentComponent } from './payment/payment.component';
 import { RxjsWorkoutsComponent } from './rxjs-workouts/rxjs-workouts.component';
 import { GenerativeAiComponent } from './generative-ai/generative-ai.component';
 import { CustomInterceptor1 } from './generative-ai/interceptors';
+import { CompComponent } from './comp/comp.component';
+import { YourComponentNameComponent } from './your-component-name/your-component-name.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { CustomInterceptor1 } from './generative-ai/interceptors';
     PaytmComponent,
     PaymentComponent,
     RxjsWorkoutsComponent,
-    GenerativeAiComponent
+    GenerativeAiComponent,
+    CompComponent,
+    YourComponentNameComponent
   ],
   imports: [
     BrowserModule,

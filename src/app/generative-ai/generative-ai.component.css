@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .msger {
@@ -9,13 +10,15 @@
   flex-flow: column wrap;
   justify-content: space-between;
   width: 100%;
-  max-width: 867px;
+  max-width: 900px;
   margin: 25px 10px;
   height: 700px;
   border: rgb(50, 45, 45);
   border-radius: 5px;
-  background: rgb(65, 83, 184);
+  background: rgb(216, 217, 222);
   box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
+  /* border: 7px solid rgb(6, 6, 6);
+  border-radius: 10px; */
 }
 
 .msger-header {
@@ -140,6 +143,8 @@
 .msger-send-btn:hover {
   background: rgb(0, 180, 50);
 }
+
+
 
   /* background-color: #463d3d; */
   

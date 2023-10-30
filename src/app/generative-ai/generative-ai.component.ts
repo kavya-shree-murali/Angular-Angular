@@ -133,6 +133,42 @@ export class GenerativeAiComponent {
 
     })
   }
+ 
+  presentationId = `1W47G9K0IoZOWrFH_U9-Wj68CgrUvqWUF0h17uHNQ`
+  googleSlide() {
+    let obj = {
+      
+        "presentationId": this.presentationId,
+        "pageSize": {
+          size : 5
+        },
+        "slides": [
+          {
+            page : 5
+          }
+        ],
+        "title": this.userMessage,
+        "masters": [
+          {
+            page : 5
+          }
+        ],
+        "layouts": [
+          {
+            page : 5
+          }
+        ],
+        
+        "notesMaster": {
+          page : 5
+        }
+      
+    }
+
+    this.openAiApiService.googleSlide(obj).subscribe((res) => {
+      console.log(res)
+    })
+  }
 
 
 }
